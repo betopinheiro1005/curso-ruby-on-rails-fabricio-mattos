@@ -1,0 +1,54 @@
+<%= form_for(@recipe) do |f| %>
+
+  <%= render 'layouts/errors', object: @recipe %>
+
+  <p class="form-group">
+    <%= f.label :Nome %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :Ingredientes %><br>
+    <%= f.text_area :stuff, cols: 40, rows: 5, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :Tipo %><br>
+    <%= f.select :kind, Recipe::KIND, prompt: 'Escolha uma opção', class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :Calorias %><br>
+    <%= f.number_field :calories, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :Modo_de_Preparo %><br>
+    <%= f.text_area :prepare_mode, cols: 40, rows: 5, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :Tempo_de_Preparo %><br>
+    <%= f.time_select :duration, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :Porções %><br>
+    <%= f.text_field :portion, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :Custo %><br>
+    <%= f.number_field :cost, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :Poster %><br>
+    <%= f.text_field :poster, placeholder: ".gif, .jpeg, .png", class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.submit class:"btn btn-primary" %>
+    <%= link_to "Cancelar", root_path, class:"btn btn-default" %>
+  </p>
+<% end %>

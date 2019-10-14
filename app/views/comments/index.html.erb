@@ -1,0 +1,31 @@
+<div class="container">
+
+  <% if @recipe.comments.size > 0 %>
+    <div class="jumbotron">
+      <ul>
+        <% @comments.each do |comment| %>
+          <li>
+            <p>
+              <%= comment.name %> <small class="small_font_rating"><%= pluralize(comment.rating, 'estrela', 'estrelas') %></small>
+              <small class="small_font"> - <%= time_ago_in_words(comment.created_at) %> atrás</small>
+            </p>
+            <p>
+              <%= comment.comment %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+      <div class="jumbotron">
+        <h3 class="text-center">Não existem comentários!</h3>
+      </div>
+  <% end %>
+
+  <%= link_to recipes_path, class:'btn btn-link' do %>
+    <i class="glyphicon glyphicon-home"> Receitas</i>
+  <% end %>
+
+</div>
+
+<br>

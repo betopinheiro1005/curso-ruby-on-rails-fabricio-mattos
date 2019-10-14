@@ -1,0 +1,30 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1><%= pluralize(@recipes.size, "Receita", "Receitas") %>
+          <small class="nova_receita"><%= link_to 'Nova receita', new_recipe_path %></small></h1>
+    </div>
+  </div>
+
+  <br>
+
+  <% @recipes.each do |recipe| %>
+    <div class="row">
+        <div class="col-md-5">
+          <%= link_to imagem(recipe), recipe, class: 'imagem_direita' %>
+        </div>
+        <div class="col-md-7">
+          <h2><%= link_to recipe.name, recipe %></h2>
+          <p><strong>Ingredientes: </strong><%= truncate(recipe.stuff, length:40, separator:' ') %></p>
+          <p><strong>Calorias: </strong><%= formata_caloria(recipe) %></p>
+          <p><strong>Tempo de preparo: </strong><%= recipe.duration.to_formatted_s(:time) %> min</p>
+          <p><strong>Custo: </strong><%= number_to_currency(recipe.cost) %></strong></p>
+        </div>
+      </div>
+    <br>
+<% end %>
+
+</div>
+
+

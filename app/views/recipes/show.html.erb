@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="jumbotron">
+    <article>
+      <head>
+        <h1><%= @recipe.name %></h1>
+        <%= imagem(@recipe) %>
+      </head>
+      <h2>Ingredientes</h2>
+      <p><%= @recipe.stuff %></p>
+      <h2>Calorias</h2>
+      <p><%= @recipe.calories %></p>
+      <h2>Modo de preparo</h2>
+      <p><%= @recipe.prepare_mode %></p>
+      <h2>Custo</h2>
+      <p><%= number_to_currency(@recipe.cost) %></p>
+    </article>
+
+    <%= link_to pluralize(@recipe.comments.size, 'Comentário', 'Comentários'), recipe_comments_path(@recipe) %>
+    <%= link_to 'Novo comentário', new_recipe_comment_path(@recipe), class: 'btn btn-primary' %>
+
+  </div>
+
+  <%= link_to recipes_path, class:'btn btn-link' do %>
+      <i class="glyphicon glyphicon-home"> Receitas</i>
+    <% end %>
+
+    <%= link_to edit_recipe_path(@recipe), class:'btn btn-link' do %>
+      <i class="glyphicon glyphicon-edit"> Editar</i>
+    <% end %>
+
+    <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: "Tem certeza que deseja excluir esta receita?"}, class:'btn btn-link' do %>
+      <i class="glyphicon glyphicon-remove-sign"> Deletar</i>
+    <% end %>
+
+</div>
+
+<br>
